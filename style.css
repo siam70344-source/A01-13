@@ -147,20 +147,39 @@ body {
 }
 
 .hero {
+    width: 1600px;
+    height: 760px   ;
   text-align: center;
   padding: 120px 20px;
   position: relative;
   background-image: url(assets/hero-bg.png);
+  object-position: center;
+    background-size: cover;
+padding: auto;
+
 }
 
 /* wave stays background */
 .wave {
+    margin-left: 100px;
+   
   position: absolute;
   inset: 0;
   background: radial-gradient(circle at center,#9333ea33,transparent);
   z-index: 0;
-}
+  margin-top: 50px;
 
+}
+.left-wave {
+  right: 180px; /* Adjust this to control how much it overlaps */
+  background-position: right center;
+}
+.right-wave {
+  left: 180px; /* Adjust this to control how much it overlaps */
+  background-position: left center;
+  /* If using the same image, flip it for symmetry */
+  transform: translateY(-50%) scaleX(-1);
+}
 /* wrapper */
 .hero-circle {
   position: relative;
@@ -224,6 +243,38 @@ body {
 }
 
 /* SECTIONS */
+#about {
+  background-color: #1A0B2E;
+  padding: 120px 20px; /* Increased vertical padding to match design */
+  text-align: center;
+}
+
+#about h2 {
+  font-size: 36px;
+  font-weight: 800;
+  margin-bottom: 24px;
+}
+#about .text {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #ffffff; /* White text in the design */
+  max-width: 900px;
+  margin: 0 auto 20px;
+}
+
+.sub-text {
+  font-size: 16px;
+  color: #b7b4c7;
+  margin-bottom: 80px; /* Space before the stats line */
+}
+
+/* The Stats Container with the Top Border */
+.stats-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  border-top: 1px solid rgba(255, 255, 255, 0.1); /* The subtle horizontal line */
+  padding-top: 60px;
+}
 .section {
   padding: 100px 20px;
   text-align: center;
@@ -241,7 +292,87 @@ body {
 .stats h3 {
   color: #34d399;
 }
+/* Stat Numbers */
+.stats h3 {
+  color: #39ffb6; /* The bright green from the screenshot */
+  font-size: 42px; /* Large, bold numbers */
+  font-weight: 900;
+  margin-bottom: 10px;
+}
 
+/* Stat Labels */
+.stats span {
+  color: #c9c3dd;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 600;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  }
+}
+.dark-bg {
+  background-color: #0F0721;
+  padding: 100px 0;
+}
+/* why choose */
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: minmax(180px, auto);
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.card {
+  background: #1B1245;
+  padding: 100px;
+  border-radius: 24px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  transition: 0.3s;
+  grid-column: span 1;
+}
+
+.card.tall {
+  grid-row: span 2;
+}
+
+.card.wide {
+  grid-column: span 2;
+  flex-direction: row; /* Aligns icon next to text as seen in Pixso */
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.icon-box img {
+  width: 48px;
+  margin-bottom: 20px;
+}
+
+.card.wide .icon-box img {
+  margin-bottom: 0;
+}
+
+.card h3 {
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+
+.card p {
+  color: #B7B4C7;
+  font-size: 14px;
+  line-height: 1.6;
+}
 /* FEATURES */
 .features {
   display: grid;
@@ -366,4 +497,63 @@ iframe {
   .host {
     flex-direction: column;
   }
+}
+/* FOOTER */
+.footer {
+    
+  position: relative;
+  background-color: #0F0721; /* Match the dark theme */
+  padding: 100px ;
+  overflow: hidden; /* Keeps waves inside the section */
+}
+
+.footer-wave-container {
+  position: relative;
+  z-index: 2; /* Keeps text above the waves */
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Creating the Wave Effect */
+.footer:before {
+  content: "";
+  position: absolute;
+  top: 50%; /* Position waves in the middle of the footer */
+  left: 0;
+  width: 100%;
+  height: 200px; /* Adjust based on your wave image height */
+  background-image: url('assets/hero-bg.png'); /* Use your wave graphic */
+  background-repeat: repeat-x;
+  background-size: contain;
+  opacity: 0.5; /* Makes it subtle like the Pixso design */
+  z-index: 1;
+  pointer-events: none;
+  transform: translateY(-50%);
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin: 40px 0;
+}
+
+.footer-links a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #c9c3dd;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s;
+}
+
+.footer-links img {
+  width: 18px; /* Small icons as seen in design */
+}
+
+.copyright {
+  color: rgba(201, 195, 221, 0.5);
+  font-size: 12px;
 }
